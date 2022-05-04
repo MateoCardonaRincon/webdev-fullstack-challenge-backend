@@ -1,4 +1,4 @@
-package com.webdev.challenge.challengebackend;
+package com.webdev.challenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.webdev.challenge.challengebackend;
+package com.webdev.challenge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
