@@ -20,6 +20,11 @@ public class NoteController {
         return noteService.getNotesByCategoryId(categoryId);
     }
 
+    @GetMapping("get/notes")
+    public List<Note> getNotes() {
+        return noteService.getNotes();
+    }
+
     @PostMapping("save/note")
     public Note saveNote(@RequestBody Note note) {
         return noteService.saveNote(note);

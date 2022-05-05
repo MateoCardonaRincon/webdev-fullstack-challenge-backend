@@ -1,12 +1,14 @@
-package com.webdev.challenge.service;
+package com.webdev.challenge.dao;
 
 import com.webdev.challenge.entity.Note;
 
 import java.util.List;
 
-public interface INoteService {
+public interface INoteDAO {
 
     List<Note> getNotesByCategoryId(Long categoryId);
+
+    List<Note> getNotes();
 
     Note saveNote(Note note);
 

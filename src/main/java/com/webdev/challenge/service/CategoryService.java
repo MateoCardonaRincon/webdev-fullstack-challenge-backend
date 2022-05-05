@@ -1,30 +1,27 @@
 package com.webdev.challenge.service;
 
+import com.webdev.challenge.dao.CategoryDAO;
 import com.webdev.challenge.entity.Category;
-import com.webdev.challenge.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CategoryService implements ICategoryService{
+public class CategoryService {
 
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryDAO categoryDAO;
 
-    @Override
     public List<Category> getCategories() {
-        return categoryRepository.findAll();
+        return categoryDAO.getCategories();
     }
 
-    @Override
     public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+        return categoryDAO.saveCategory(category);
     }
 
-    @Override
     public void deleteCategory(Long categoryId) {
-        categoryRepository.deleteById(categoryId);
+        categoryDAO.deleteCategory(categoryId);
     }
 }

@@ -1,10 +1,10 @@
-package com.webdev.challenge.service;
+package com.webdev.challenge.dao;
 
 import com.webdev.challenge.entity.Category;
 
 import java.util.List;
 
-public interface ICategoryService {
+public interface ICategoryDAO {
 
     List<Category> getCategories();
 
