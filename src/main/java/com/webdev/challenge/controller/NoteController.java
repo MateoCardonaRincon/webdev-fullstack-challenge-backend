@@ -14,13 +14,13 @@ public class NoteController {
     @Autowired
     private NoteService noteService;
 
-    @GetMapping("get/Notes/{categoryId}")
+    @GetMapping("get/notes/{categoryId}")
     public List<Note> getNotesByCategoryId(@PathVariable("categoryId") Long categoryId) {
         return noteService.getNotesByCategoryId(categoryId);
     }
 
     @PostMapping("save/note")
-    public Note saveNote(Note note) {
+    public Note saveNote(@RequestBody Note note) {
         return noteService.saveNote(note);
     }
 

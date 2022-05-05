@@ -17,6 +17,11 @@ public class Category {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Note> notes = new ArrayList<>();
+
+    public Category addNote(Note note) {
+        this.notes.add(note);
+        return this;
+    }
 }
