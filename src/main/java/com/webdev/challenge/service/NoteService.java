@@ -3,9 +3,11 @@ package com.webdev.challenge.service;
 import com.webdev.challenge.entity.Note;
 import com.webdev.challenge.repository.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NoteService implements INoteService{
 
     @Autowired
