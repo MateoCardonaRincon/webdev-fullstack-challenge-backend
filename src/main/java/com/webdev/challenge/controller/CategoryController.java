@@ -3,6 +3,7 @@ package com.webdev.challenge.controller;
 import com.webdev.challenge.entity.Category;
 import com.webdev.challenge.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class CategoryController {
     }
 
     @DeleteMapping("delete/category/{categoryId}")
-    public void deleteCategory(@PathVariable("categoryId") Long categoryId){
-        categoryService.deleteCategory(categoryId);
+    public ResponseEntity<String> deleteCategory(@PathVariable("categoryId") Long categoryId){
+        return categoryService.deleteCategory(categoryId);
     }
 
 }

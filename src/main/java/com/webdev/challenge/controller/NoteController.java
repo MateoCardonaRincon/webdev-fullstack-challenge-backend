@@ -3,6 +3,7 @@ package com.webdev.challenge.controller;
 import com.webdev.challenge.entity.Note;
 import com.webdev.challenge.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,8 +37,8 @@ public class NoteController {
     }
 
     @DeleteMapping("delete/note/{noteId}")
-    public void deleteNote(@PathVariable("noteId") Long noteId) {
-        noteService.deleteNote(noteId);
+    public ResponseEntity<String> deleteNote(@PathVariable("noteId") Long noteId) {
+        return noteService.deleteNote(noteId);
     }
 
 }
