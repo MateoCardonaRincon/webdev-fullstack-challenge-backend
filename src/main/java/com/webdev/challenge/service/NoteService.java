@@ -1,5 +1,6 @@
 package com.webdev.challenge.service;
 
+import com.webdev.challenge.dto.NoteDTO;
 import com.webdev.challenge.entity.Category;
 import com.webdev.challenge.entity.Note;
 import com.webdev.challenge.repository.CategoryRepository;
@@ -12,12 +13,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class NoteService implements INoteService {
 
-//    @Autowired
-//    private ModelMapper mapper;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private NoteRepository noteRepository;
@@ -25,31 +27,32 @@ public class NoteService implements INoteService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public List<Note> getNotes() {
-        return noteRepository.findAll();
+    public List<NoteDTO> getNotes() {
+        List<Note> noteList = noteRepository.findAll();
+        return noteList.stream().map(this::mapToDTO).collect(Collectors.toList());
     }
 
     @Override
     public List<Note> getNotesByCategoryId(Long categoryId) {
-        return null;
+        return noteRepository.getNotesByCategoryId(categoryId);
     }
 
-    public Note saveNote(Note note) {
+    public NoteDTO saveNote(Note note) {
         Optional<Category> addToCategory = categoryRepository.findById(note.getFkCategoryId());
         if (addToCategory.isPresent() && (note.getTitle() != null) && (note.getMessage() != null)) {
             addToCategory.get().addNote(note);
             Note savedNote = noteRepository.save(note);
             categoryRepository.save(addToCategory.get());
-            return savedNote;
+            return mapToDTO(savedNote);
         }
         return null;
     }
 
-    public Note updateNote(Note note) {
+    public NoteDTO updateNote(Note note) {
         Optional<Category> updateInCategory = categoryRepository.findById(note.getFkCategoryId());
         if (updateInCategory.isPresent() && note.getId() != null && note.getTitle() != null
                 && note.getMessage() != null) {
-            return noteRepository.save(note);
+            return mapToDTO(noteRepository.save(note));
         }
         return null;
     }
@@ -61,5 +64,13 @@ public class NoteService implements INoteService {
             return new ResponseEntity<>("Note deleted successfully", HttpStatus.OK);
         }
         return new ResponseEntity<>("The Id of the specified note does note exist", HttpStatus.BAD_REQUEST);
+    }
+
+    private NoteDTO mapToDTO(Note note) {
+        return modelMapper.map(note, NoteDTO.class);
+    }
+
+    private Note mapToEntity(NoteDTO noteDTO) {
+        return modelMapper.map(noteDTO, Note.class);
     }
 }

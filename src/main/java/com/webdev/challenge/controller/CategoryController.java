@@ -1,5 +1,6 @@
 package com.webdev.challenge.controller;
 
+import com.webdev.challenge.dto.CategoryDTO;
 import com.webdev.challenge.entity.Category;
 import com.webdev.challenge.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,17 +18,17 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("get/categories")
-    public List<Category> getCategories(){
+    public List<CategoryDTO> getCategories() {
         return categoryService.getCategories();
     }
 
     @PostMapping("save/category")
-    public Category saveCategory(@RequestBody Category category) {
+    public CategoryDTO saveCategory(@RequestBody Category category) {
         return categoryService.saveCategory(category);
     }
 
     @DeleteMapping("delete/category/{categoryId}")
-    public ResponseEntity<String> deleteCategory(@PathVariable("categoryId") Long categoryId){
+    public ResponseEntity<String> deleteCategory(@PathVariable("categoryId") Long categoryId) {
         return categoryService.deleteCategory(categoryId);
     }
 

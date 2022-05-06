@@ -1,5 +1,6 @@
 package com.webdev.challenge.service;
 
+import com.webdev.challenge.dto.NoteDTO;
 import com.webdev.challenge.entity.Note;
 import org.springframework.http.ResponseEntity;
 
@@ -7,13 +8,13 @@ import java.util.List;
 
 public interface INoteService {
 
-    List<Note> getNotes();
+    List<NoteDTO> getNotes();
 
     List<Note> getNotesByCategoryId(Long categoryId);
 
-    Note saveNote(Note note);
+    NoteDTO saveNote(Note note);
 
-    Note updateNote(Note note);
+    NoteDTO updateNote(Note note);
 
     ResponseEntity<String> deleteNote(Long noteId);
 }
