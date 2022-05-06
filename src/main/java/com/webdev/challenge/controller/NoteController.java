@@ -1,5 +1,6 @@
 package com.webdev.challenge.controller;
 
+import com.webdev.challenge.dto.NoteDTO;
 import com.webdev.challenge.entity.Note;
 import com.webdev.challenge.service.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,17 @@ public class NoteController {
     }
 
     @GetMapping("get/notes")
-    public List<Note> getNotes() {
+    public List<NoteDTO> getNotes() {
         return noteService.getNotes();
     }
 
     @PostMapping("save/note")
-    public Note saveNote(@RequestBody Note note) {
+    public NoteDTO saveNote(@RequestBody Note note) {
         return noteService.saveNote(note);
     }
 
     @PutMapping("update/note")
-    public Note updateNote(@RequestBody Note note) {
+    public NoteDTO updateNote(@RequestBody Note note) {
         return noteService.updateNote(note);
     }
 
