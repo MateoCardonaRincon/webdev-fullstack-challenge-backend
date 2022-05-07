@@ -4,7 +4,7 @@
 You need to be sure that your backend is running before start the client side of the application, so lets follow the next steps
 #### 1. Clone this backend repository (either in git bash or using your favorite terminal) by typing:
     git clone https://github.com/MateoCardonaRincon/webdev-fullstack-challenge-backend.git
-#### 2. Open you MySQL Workbench (or use a terminal if you prefer) to create a new Schema with the name todo_app
+#### 2. Open your MySQL Workbench (or use a terminal if you prefer) to create a new Schema with the name todo_app
 (this is the name of the schema that I set on the application.properties file, if you want to change it feel free of doing it).
 #### 3. Open the cloned repository in your favorite Java IDE and let the dependencies get installed (this is a Maven project).
 #### 4. Go to the application.properties file, located in /src/main/resources, and set the MySQL credentials of your local instance (password, username, url).
@@ -12,7 +12,7 @@ Please let the port as it is, the well-known 8081 port, since the frontend is se
 #### 5. Now, run the ChallengeBackendApplication located in the folder /src/main/java
 This step will start the backend application, and now you are ready to test the API through postman,
 or even better, to try the fullstack application from the frontend following the steps in the readme of the frontend repository
-https://github.com/MateoCardonaRincon/webdev-fullstack-challenge-fro
+https://github.com/MateoCardonaRincon/webdev-fullstack-challenge-frontend
 
 ## Use Case:
 
